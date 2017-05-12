@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=UTF-8>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Угадай мелодию</title>
+    <script src="//vk.com/js/api/xd_connection.js?2" type="text/javascript"></script>
+    <base href="/">
+</head>
+<body id="body">
+
+<app>
+
+
+    <style type="text/css">
+        #pre-bootstrap {
+            background-color: #262626 ;
+            bottom: 0px ;
+            left: 0px ;
+            position: fixed ;
+            right: 0px ;
+            top: 0px ;
+            z-index: 999999 ;
+
+            background-image: url(./images/loading_screen.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+        #pre-bootstrap div.messaging {
+            color: #FFFFFF ;
+            font-family: monospace ;
+            left: 0px ;
+            margin-top: -37px ;
+            position: absolute ;
+            right: 0px ;
+            text-align: center ;
+            top: 50% ;
+        }
+        #pre-bootstrap h1 {
+            font-size: 26px ;
+            line-height: 35px ;
+            margin: 0px 0px 20px 0px ;
+        }
+        #pre-bootstrap p {
+            font-size: 18px ;
+            line-height: 14px ;
+            margin: 0px 0px 0px 0px ;
+        }
+    </style>
+
+    <div id="pre-bootstrap">
+        <div class="messaging">
+
+            <h1>
+                Загрузка приложения...
+            </h1>
+
+            <p>
+                Подготовка и упаковка луших песен. Приятной игры!
+            </p>
+
+        </div>
+    </div>
+
+</app>
+
+<script type="application/javascript">
+    VK.init(function() {
+        // API initialization succeeded
+        // Your code here
+    }, function() {
+        // API initialization failed
+        // Can reload page here
+    }, '5.60');
+
+    function autosize() {
+        if (typeof VK.callMethod != 'undefined') {
+            var windowClientHeight = document.getElementById('body').clientHeight + 60;
+            if(windowClientHeight < 1000) {
+                windowClientHeight = 1000;
+            }
+            if(previousWindowClientHeight != windowClientHeight) {
+                VK.callMethod('resizeWindow', 960, windowClientHeight);
+            }
+            var previousWindowClientHeight = windowClientHeight;
+        } else {
+            alert('error #2');
+        }
+    }
+    setInterval('autosize()', 1000);
+</script>
+
+<script src="/polyfills.bundle.js"></script>
+<script src="/vendor.bundle.js"></script>
+<script src="/main.bundle.js"></script>
+
+
+<style type="text/css">
+    .animate-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        perspective: 1200px;
+        transform-style: preserve-3d;
+    }
+
+    .animate-container > * {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .visibility-children.animate-container > * {
+        visibility: visible;
+    }
+
+
+</style>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<div *ngIf="!songId">
+    <h3>Add new song</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <input class="form-control" [(ngModel)]="name" placeholder="Enter song name">
+        </div>
+        <div class="col-md-6">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" [(ngModel)]="rightVariant" name="rightVariant" [value]="1">
+                        </span>
+                        <input class="form-control" [(ngModel)]="variant1" placeholder="Enter variant 1">
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" [(ngModel)]="rightVariant" name="rightVariant" [value]="2" >
+                        </span>
+                        <input class="form-control" [(ngModel)]="variant2" placeholder="Enter variant 2">
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" [(ngModel)]="rightVariant" name="rightVariant" [value]="3">
+                        </span>
+                        <input class="form-control" [(ngModel)]="variant3" placeholder="Enter variant 3">
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="radio" [(ngModel)]="rightVariant" name="rightVariant" [value]="4">
+                        </span>
+                        <input class="form-control" [(ngModel)]="variant4" placeholder="Enter variant 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" (click)="sendForm()">Create</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="songId">
+    <input type="file" ng2FileSelect [uploader]="createUploader(songId)"  accept=".mp3" />
+</div>
+

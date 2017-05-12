@@ -1,0 +1,38 @@
+<div class="chat-container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Чат
+                    <div class="btn-group pull-right">
+                        <button (click)="toggleChat()" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                    </div>
+                </div>
+                <div #chatContainer *ngIf="opened" class="panel-body">
+                    <ul  class="chat">
+                        <li *ngFor="let message of messages; let even = even; let odd = odd"  [ngClass]="{ 'right': odd,  'left':even }" class="clearfix">
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{message?.name}}</strong>
+                                </div>
+                                <p>
+                                    {{message?.text}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="opened" class="panel-footer">
+                    <div class="input-group">
+                        <input [(ngModel)]="text" (keyup.enter)="sendMessage()" type="text" class="form-control input-sm" placeholder="Введите сообщение сюда..." />
+                        <span class="input-group-btn">
+                            <button (click)="sendMessage()" class="btn btn-warning btn-sm">Отправить</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

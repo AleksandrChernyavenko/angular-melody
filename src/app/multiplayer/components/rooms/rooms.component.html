@@ -1,0 +1,15 @@
+<h3 class="text-center">Выберите жанр из списка</h3>
+<p>Ниже предоставленны жанры с количеством людей играющих в данный момент</p>
+
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2 list-group">
+
+            <a *ngFor="let room of rooms" class="list-group-item" [routerLink]="['/multiplayer/game', room.roomId]" >
+                <img src="{{room.image}}">
+                <div class="room">
+                    {{room.name}} - <span>{{room.userCount}}</span> игрок(ов)
+                </div>
+            </a>
+
+    </div>
+</div>

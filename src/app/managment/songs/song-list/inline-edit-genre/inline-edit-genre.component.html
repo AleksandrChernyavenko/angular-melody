@@ -1,0 +1,12 @@
+<tag-input [(ngModel)]='genres'
+           (onRemove)="onItemRemoved($event)"
+           (onAdd)="onItemAdded($event)"
+           [onlyFromAutocomplete]="true"
+           [autocompleteItems]="listAvailableGenresNames"
+           [autocomplete]="true"
+           [showDropdownIfEmpty]="true"
+           [placeholder]="'Добавить жанр'"
+           [secondaryPlaceholder]="'Добавить новый жанр'"
+>
+</tag-input>
+

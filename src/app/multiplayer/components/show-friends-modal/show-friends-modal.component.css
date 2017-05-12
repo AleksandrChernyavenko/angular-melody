@@ -1,0 +1,33 @@
+.thumbnail {
+    width: 50px;
+    height: 100%;
+}
+
+.friend {
+    height: 50px;
+}
+
+.friend > div {
+    float: left;
+}
+
+.input-group {
+    padding-bottom: 7px;
+}
+
+.list-group {
+    height: 498px;
+    overflow-y: scroll;
+}
+
+.friend-name {
+    margin-left: 8px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+
+.invite-button {
+    padding: 6px;
+}

@@ -1,0 +1,40 @@
+<div *ngIf="isAdmin" [routerLinkActive]="['active']">
+    <a [routerLink]="['/management']" class="btn btn-primary">Панель управление</a>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-4 adventure" [routerLinkActive]="['active']">
+        <a [routerLink]="['/adventure']" class="btn">
+            Одиночная игра
+            <i class="fa fa-user-circle-o fa-2x"></i>
+        </a>
+    </div>
+    <div class="col-xs-4 level">
+        <div>
+            Уровень: {{currentUser.level}}
+        </div>
+
+
+        <div class="progress">
+            <div class="progress-bar" [style.width.%]="nextLevelPercent" [@experienceIncrease]="getExperienceState()">
+                {{currentUser.experience}} / {{nextLevelExperience}}
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-4 multiplayer" [routerLinkActive]="['active']">
+        <a [routerLink]="['/multiplayer']" class="btn ">
+            <i class="fa fa-group fa-2x"></i>
+            Сражение c другими игроками
+        </a>
+    </div>
+</div>
+
+
+<main>
+    <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,45 @@
+<div class="modal fade bs-example-modal-lg in" tabindex="-1" style="display: block; padding-right: 15px;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Выберите друга для приглашения в текущую игру</h4></div>
+            <div class="modal-body">
+
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                    <input  class="form-control" [(ngModel)]="search"  type="text" placeholder="Начните вводить имя или фамилию">
+                </div>
+
+                <div  *ngIf="!loading" class="list-group">
+                    <div class="list-group-item " *ngFor="let friend of getFilteredFriends()">
+                        <div class="friend">
+                            <div class="thumbnail">
+                                <img [src]="friend.photo">
+                            </div>
+                            <div class="friend-name">
+                                {{friend.last_name}} {{friend.first_name}}
+                            </div>
+                            <div class="pull-right invite-button">
+                                <button (click)="chooseUser(friend.id)" type="button" class="btn btn-primary btn-block ">Вызвать на сражение</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <loading [loading]="loading" text="Получаем список друзей"></loading>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="closeModal()">Готово</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade in"></div>

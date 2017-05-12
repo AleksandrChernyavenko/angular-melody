@@ -1,0 +1,9 @@
+<h3>Список жанров</h3>
+
+<div class="list-group">
+    <a *ngFor="let genre of genres"  class="list-group-item" [routerLink]="['../levels-list', genre.id]" >
+        <img src="{{genre.url}}" class="img-rounded" style="height: 50px">
+        {{genre.name}}  - ({{genre.countOfLevels}}) уровней
+    </a>
+
+</div>

@@ -1,0 +1,54 @@
+<div *ngIf="totalItems">
+
+    <h3>Список жанров <span class="badge">{{totalItems}}</span></h3>
+
+    <div class="table-responsive">
+
+        <a [routerLink]="['../add-new-genre']" class="btn btn-info pull-right">Добавить новый жанр</a>
+        <pagination [currentPage]="page" [totalItems]="totalItems" (onPageChange)="changePage($event)"></pagination>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Действие</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let genre of genres; let index = index;">
+
+                <th>
+                    {{genre.id}}
+                </th>
+
+                <td>
+                    <span *ngIf="!genre.editing">
+                        {{genre.name}}
+                        <span class="glyphicon glyphicon-pencil" (click)="genre.editing = true;"></span>
+                    </span>
+                    <span *ngIf="genre.editing">
+                        <input class="form-control" [(ngModel)]="genres[index].name">
+                        <span class="glyphicon glyphicon-ok" (click)="changeName(genre)"></span>
+                    </span>
+                </td>
+
+                <th>
+                    <span class="glyphicon glyphicon-trash" (click)="removeGenre(genre.id)"></span>
+                    <a [routerLink]="['../upload',genre.id]" class="btn btn-info pull-right">
+                        <span class="glyphicon glyphicon glyphicon-picture"></span>
+                    </a>
+                </th>
+
+            </tr>
+            </tbody>
+            <pagination [currentPage]="page" [totalItems]="totalItems" (onPageChange)="changePage($event)"></pagination>
+        </table>
+    </div>
+
+    <a [routerLink]="['../add-new-genre']" class="btn btn-info pull-right">Добавить новый жанр</a>
+
+</div>
+
+
+<loading [loading]="!totalItems"></loading>

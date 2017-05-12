@@ -1,0 +1,20 @@
+<h3>Список участников</h3>
+
+<ul class="list-group">
+    <li *ngFor="let user of users" class="list-group-item" [class.current-user]="user.id === currentUserId">
+        <div class="row">
+            <div class="col-xs-7">
+                {{user.name}}
+            </div>
+            <div class="col-xs-2">
+                <span class="badge">{{user.score}}</span>
+                <span *ngIf="user.addedScore">+{{user.addedScore}}</span>
+            </div>
+            <div class="col-xs-3 col-user-state">
+                <span class="glyphicon {{getIconClass(user)}} "></span>
+                <i *ngIf="user.award" class="fa fa-trophy {{getAwardClass(user)}}" ></i>
+
+            </div>
+        </div>
+    </li>
+</ul>

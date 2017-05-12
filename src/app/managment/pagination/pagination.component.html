@@ -1,0 +1,18 @@
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" (click)="selectPage($event,1)" [class.active]="currentPage === 1">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li *ngFor="let page of pages">
+            <a href="#" (click)="selectPage($event,page)" [class.active]="currentPage === 1">{{page}}</a>
+        </li>
+
+        <li>
+            <a href="#" (click)="selectPage($event,getPageCount())" [class.active]="currentPage === getPageCount()">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

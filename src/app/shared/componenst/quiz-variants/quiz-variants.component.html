@@ -1,0 +1,52 @@
+<div *ngIf="variants" class="quiz">
+
+    <template ngFor let-variant [ngForOf]="variants" let-i="index">
+        <div [ngSwitch]="i" class="variant">
+
+            <label *ngSwitchCase="0" @variant1 [@answer]="getVariantState(variant)"
+                   class="btn btn-lg btn-primary btn-block"
+                   (click)="chooseVariant(variant.id)"
+            >
+                    <span class="btn-label">
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </span>
+                {{variant.name}}
+            </label>
+
+            <label *ngSwitchCase="1" @variant2 [@answer]="getVariantState(variant)"
+                   class="btn btn-lg btn-primary btn-block"
+                   (click)="chooseVariant(variant.id)"
+            >
+                    <span class="btn-label">
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </span>
+                {{variant.name}}
+            </label>
+
+            <label *ngSwitchCase="2" @variant3 [@answer]="getVariantState(variant)"
+                   class="btn btn-lg btn-primary btn-block"
+                   (click)="chooseVariant(variant.id)"
+            >
+                    <span class="btn-label">
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </span>
+                {{variant.name}}
+            </label>
+
+            <label *ngSwitchCase="3" @variant4 [@answer]="getVariantState(variant)"
+                   class="btn btn-lg btn-primary btn-block"
+                   (click)="chooseVariant(variant.id)"
+            >
+                    <span class="btn-label">
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </span>
+                {{variant.name}}
+            </label>
+
+        </div>
+
+
+    </template>
+
+
+</div>

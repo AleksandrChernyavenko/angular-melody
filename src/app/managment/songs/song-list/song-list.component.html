@@ -1,0 +1,88 @@
+<div *ngIf="!loading">
+
+    <h3>Список тестов <span class="badge">{{totalItems}}</span></h3>
+
+    <div class="table-responsive">
+        <a [routerLink]="['../add-new-song']" class="btn btn-info pull-right">Добавить новую песню</a>
+        <pagination [currentPage]="page" [totalItems]="totalItems" (onPageChange)="changePage($event)" [pageSize]="limit"></pagination>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Название</th>
+                <th>Варианты</th>
+                <th>Жанры</th>
+                <th>Песня</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <th></th>
+                <th></th>
+                <th>
+                    <select class="form-control" [(ngModel)]="selectedGenreId" (change)="getNewSongs()">
+                        <option value=""></option>
+                        <option *ngFor="let genre of listAvailableGenres" value={{genre.id}}>
+                            {{genre.name}}
+                        </option>
+                    </select>
+                </th>
+                <th></th>
+            </tr>
+
+            <tr *ngFor="let song of songs; let index = index;">
+                <td>
+                    <span *ngIf="!song.editing">
+                        {{song.name}}
+                        <span class="glyphicon glyphicon-pencil" (click)="song.editing = true;"></span>
+                    </span>
+                    <span *ngIf="song.editing">
+                        <input class="form-control" [(ngModel)]="songs[index].name">
+                        <span class="glyphicon glyphicon-ok" (click)="changeSongName(song)"></span>
+                    </span>
+                </td>
+                <td>
+                    <div class="list-group">
+                        <div *ngFor="let variant of song.Variants; let index = index;" class="list-group-item"
+                             [class.list-group-item-success]="variant.id === song.RightVariantId">
+
+                            <span *ngIf="!variant.editing">
+                                <a (click)="selectVariant(song.id,variant.id)">
+                                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                                </a>
+                                    {{variant.name}}
+                                <span class="glyphicon glyphicon-pencil" (click)="variant.editing = true;"></span>
+                            </span>
+                            <span *ngIf="variant.editing">
+                                <input class="form-control" [(ngModel)]="song.Variants[index].name">
+                                <span class="glyphicon glyphicon-ok" (click)="changeVariantName(variant)"></span>
+                            </span>
+
+                        </div>
+                    </div>
+                </td>
+                <th class="genre-col">
+                    <inline-edit-genre [listAvailableGenres]="listAvailableGenres" [song]="song"></inline-edit-genre>
+                </th>
+                <th>
+                    <audio-song [url]="song.url"></audio-song>
+                    <a [routerLink]="['../upload', song.id]">Изменить песню</a>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+        <pagination [currentPage]="page" [totalItems]="totalItems" (onPageChange)="changePage($event)" [pageSize]="limit"></pagination>
+        <select class="form-control" [(ngModel)]="limit" (change)="getNewSongs()">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="100">100</option>
+        </select>
+
+    </div>
+    <a [routerLink]="['../add-new-song']" class="btn btn-info pull-right">Добавить новую песню</a>
+
+</div>
+
+
+
+<loading [loading]="loading"></loading>

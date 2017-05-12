@@ -1,0 +1,26 @@
+<div *ngIf="!loading" class="genres-list">
+    <h2 class="text-center">Выберить жанр</h2>
+
+
+    <div *ngFor="let level of levels" class="row">
+        <div class="col-xs-10">
+            <div>
+                {{level.name}}
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="min-width: 2em;"
+                     [style.width]="calculateCompletedPercent(level)+'%'">
+                    {{calculateCompletedPercent(level)}}%
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <button type="button" class="btn btn-default" (click)="goToLevels(level)">Играть</button>
+        </div>
+    </div>
+</div>
+
+
+<loading [loading]="loading" text="Загрузка уровней..."></loading>
+
+

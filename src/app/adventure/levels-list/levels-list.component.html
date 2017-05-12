@@ -1,0 +1,19 @@
+<div *ngIf="!loading">
+    <h2 class="text-center">{{levelName}} - Выберите уровень</h2>
+    <div class="level-list">
+        <ul class="">
+            <li *ngFor="let level of levelList; let levelIndex = index; " [ngClass]="getCssClass(level)" (click)="onClick(level)">
+                <div class="level-content">
+                    <span class="glyphicon" [ngClass]="getStatusIcon(level)"></span>
+                    <span class="glyphicon-class"> {{levelIndex+1}}</span>
+                    <div class="star-container">
+                        <i *ngFor="let i of getActiveStars(level)" class="fa fa-star"></i>
+                        <i *ngFor="let i of getDisablesStars(level)" class="fa fa-star-o"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<loading [loading]="loading" text="Загрузка уровней..."></loading>

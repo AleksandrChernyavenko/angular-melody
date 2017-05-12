@@ -1,0 +1,33 @@
+.row {
+    border-bottom: 1px solid rgb(221, 221, 221);
+    border-radius: 4px 4px 0px 0px;
+}
+
+.row > div {
+    height: 50px;
+}
+
+a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    /*padding: 1.2em 4.38em 1em 4.3em;*/
+    height: 100%;
+    width: 100%;
+}
+
+div.active > a {
+    color: #333;
+}
+
+.adventure {
+    background: #5bb2fc;
+}
+
+.multiplayer {
+    background: #ffa659;
+}
+
+.progress-bar {
+    min-width: 6em;
+}

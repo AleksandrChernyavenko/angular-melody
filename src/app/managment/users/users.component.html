@@ -1,0 +1,54 @@
+<div *ngIf="totalItems">
+
+    <h3>Список пользователей <span class="badge">{{totalItems}}</span></h3>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>vkId</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>isAdmin</th>
+                <th>level</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users; let index = index;">
+
+                <th>
+                    {{user.id}}
+                </th>
+
+                <th>
+                    {{user.vkId}}
+                </th>
+
+                <th>
+                    {{user.firstName}}
+                </th>
+
+                <th>
+                    {{user.lastName}}
+                </th>
+
+                <td>
+                    {{user.isAdmin}}
+                </td>
+
+                <td>
+                    {{user.level}}
+                </td>
+
+            </tr>
+            </tbody>
+            <pagination [currentPage]="page" [totalItems]="totalItems" (onPageChange)="changePage($event)"></pagination>
+        </table>
+    </div>
+
+</div>
+
+
+<loading [loading]="!totalItems"></loading>

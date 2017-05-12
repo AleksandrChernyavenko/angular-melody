@@ -1,0 +1,44 @@
+<h3>Список уровней в жанре "{{genre?.name}}"</h3>
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Номер</th>
+        <th>Песни</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let level of levels; let index = index;">
+
+
+        <th>
+            {{index + 1}}
+        </th>
+
+        <td>
+            <ul class="list-group">
+                <li *ngFor="let song of level.Songs" class="list-group-item">
+                    {{song.name}}
+                </li>
+
+
+            </ul>
+            <div>
+                <input ng2-auto-complete
+                       placeholder="Введите название песни для добавления"
+                       [source]="getAutoCompleteSource"
+                       (valueChanged)="onAddSong($event,level.id)"
+                       display-property-name="name"
+                       path-to-data="rows"
+                       min-chars="0"/>
+            </div>
+            Рекомендуемое количество песен в уровне от 10 до 15;
+
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+<button (click)="addLevel()" type="button" class="btn btn-success">Добавить уровень</button>

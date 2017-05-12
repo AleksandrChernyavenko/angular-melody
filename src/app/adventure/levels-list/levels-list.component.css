@@ -1,0 +1,74 @@
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+li {
+    width: 20%;
+    font-size: 25px;
+    float: left;
+    height: 115px;
+    padding: 10px;
+    line-height: 1.4;
+    text-align: center;
+    background-color: #f3f1f1;
+    border: 5px solid #fff;
+    position: relative;
+    cursor: pointer;
+}
+
+li.forbidden {
+    cursor: not-allowed;
+}
+
+.level-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*colors for state*/
+.done {
+    color: green;
+}
+
+.next-level {
+    color: blue;
+}
+
+.forbidden {
+    color: #ff5136;
+}
+
+/*hovers*/
+li:hover .glyphicon {
+    color: white;
+    font-size: 75px;
+}
+
+.done:hover {
+    background-color: green;
+}
+
+.next-level:hover {
+    background-color: blue;
+}
+
+.forbidden:hover {
+    background-color: #ff5136;
+}
+
+
+li:hover .glyphicon-class {
+    display: none;
+}
+li:hover .star-container {
+    display: none;
+}
+
+.glyphicon-class {
+    display: block;
+    text-align: center;
+    word-wrap: break-word;
+}

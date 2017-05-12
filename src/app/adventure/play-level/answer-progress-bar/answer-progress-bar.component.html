@@ -1,0 +1,9 @@
+<div class="answer-progress-bar">
+
+    <span *ngFor="let item of getItems()">
+        <i *ngIf="item === null" class="fa fa-circle-o fa-3x"></i>
+        <i *ngIf="item === false" class="fa fa-times-circle fa-3x"></i>
+        <i *ngIf="item === true" class="fa fa-chevron-circle-down fa-3x"></i>
+    </span>
+
+</div>
