@@ -145,9 +145,6 @@ export class AdventurePlayLevelComponent implements OnInit, OnDestroy {
         };
 
         this.isLevelFinished = true;
-        //show modal with result
-        //with button next ( forward to "Прохождение" page )
-        //
     }
 
     calculateScore() {
@@ -156,13 +153,13 @@ export class AdventurePlayLevelComponent implements OnInit, OnDestroy {
             return 0;
         }
         const donePercent = (this.rightAnswersCount / totalSongsCount );
-        if (donePercent > 0.95) {
+        if (donePercent > 0.70) {
             return 3;
         }
-        else if (donePercent > 0.75) {
+        else if (donePercent > 0.50) {
             return 2;
         }
-        else if (donePercent > 0.60) {
+        else if (donePercent > 0.30) {
             return 1;
         }
         return 0;
